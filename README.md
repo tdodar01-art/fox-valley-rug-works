@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fox Valley Rug Works
+
+Premium area rug cleaning website built with Next.js 14 (App Router), Tailwind CSS, and TypeScript. Designed for deployment on Vercel.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Deploy to Vercel
 
-To learn more about Next.js, take a look at the following resources:
+Push to GitHub and connect the repository to [Vercel](https://vercel.com). The project is pre-configured for zero-config deployment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/                    # Next.js App Router pages
+  about/                # Our Process page
+  services/             # Services overview
+  rug-types/            # Rug types we clean
+  pricing/              # Pricing table
+  faq/                  # FAQ with accordion
+  contact/              # Contact form + plant info
+  rug-cleaning/[city]/  # Dynamic SEO city pages (70+ cities)
+  sitemap.ts            # Auto-generated sitemap
+  robots.ts             # Robots.txt config
+components/             # Reusable React components
+lib/
+  cities.ts             # City data for all service area pages
+  metadata.ts           # Shared metadata helpers
+```
 
-## Deploy on Vercel
+## City Pages System
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site includes 70+ SEO landing pages targeting "[City] rug cleaning" keywords. City data is defined in `lib/cities.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Each city page is statically generated at build time via `generateStaticParams()`. To add a new city:
+
+1. Add a city object to the `cities` array in `lib/cities.ts`
+2. Include `slug`, `name`, `county`, `description`, `nearby` city slugs, and `meta` data
+3. Rebuild -- the new page will be generated automatically
+
+## Adding Real Photos
+
+All photo positions use the `PhotoPlaceholder` component. To replace with real images:
+
+1. Add photos to the `public/` directory (e.g., `public/images/`)
+2. Replace `<PhotoPlaceholder>` instances with Next.js `<Image>` components
+3. Use `next/image` for automatic optimization
+
+## Fonts
+
+- **Playfair Display** -- headings and display text
+- **Source Sans 3** -- body text
+- **Libre Franklin** -- buttons, nav, labels
+
+All loaded via `next/font/google` for performance.
+
+## Color Palette
+
+| Token | Hex | Usage |
+|---|---|---|
+| `--color-cream` | `#F5F0E8` | Background |
+| `--color-charcoal` | `#2C2C2C` | Primary text |
+| `--color-slate` | `#4A5568` | Secondary text |
+| `--color-rust` | `#B7472A` | Primary accent |
+| `--color-gold` | `#C4993B` | Secondary accent |
+| `--color-sage` | `#7C8C6E` | Tertiary accent |
+| `--color-wash-blue` | `#3B6B8C` | Sparingly |
+
+## Analytics
+
+Google Analytics and Search Console placeholders are in `app/layout.tsx`. Uncomment and add your measurement IDs when ready.
+
+## Contact Form
+
+The contact form currently uses `mailto:` to send form data via the user's email client. To add a backend form handler, update `components/ContactForm.tsx`.
