@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
-import PhotoPlaceholder from '@/components/PhotoPlaceholder';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import CTABanner from '@/components/CTABanner';
 
@@ -124,7 +124,8 @@ export default function HomePage() {
         subheadline="Fox Valley Rug Works is a dedicated rug cleaning plant serving the northwest Chicago suburbs. We clean, restore, and protect fine area rugs of every type — from heirloom Persians to everyday wool rugs."
         primaryCTA={{ label: 'Get a Free Estimate', href: '/contact' }}
         secondaryCTA={{ label: 'See Our Process', href: '/about' }}
-        photoDescription="Photo: Aerial view of vibrant clean rugs drying in the plant"
+        photoSrc="/images/hero-rugs-drying-in-plant.webp"
+        photoAlt="Aerial view of vibrant clean rugs drying in the Fox Valley Rug Works plant"
       />
 
       {/* Trust Bar */}
@@ -308,9 +309,15 @@ export default function HomePage() {
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <PhotoPlaceholder description="Photo: Close-up of hand-washing a Persian rug" aspectRatio="4:3" />
-            <PhotoPlaceholder description="Photo: Rugs hanging in the climate-controlled drying room" aspectRatio="4:3" />
-            <PhotoPlaceholder description="Photo: Before and after comparison of a cleaned wool rug" aspectRatio="4:3" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <Image src="/images/hand-washing-persian-rug.webp" alt="Close-up of hand-washing a Persian rug" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <Image src="/images/drying-room-rugs-hanging.webp" alt="Rugs hanging in the climate-controlled drying room" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <Image src="/images/before-after-wool-rug-cleaning.webp" alt="Before and after comparison of a cleaned wool rug" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+            </div>
           </div>
         </div>
       </section>

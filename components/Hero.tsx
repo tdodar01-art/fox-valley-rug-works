@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import PhotoPlaceholder from './PhotoPlaceholder';
+import Image from 'next/image';
 
 interface HeroProps {
   headline: string;
   subheadline: string;
   primaryCTA?: { label: string; href: string };
   secondaryCTA?: { label: string; href: string };
-  photoDescription?: string;
+  photoSrc?: string;
+  photoAlt?: string;
 }
 
 export default function Hero({
@@ -14,7 +15,8 @@ export default function Hero({
   subheadline,
   primaryCTA,
   secondaryCTA,
-  photoDescription,
+  photoSrc,
+  photoAlt,
 }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-[var(--color-cream)]">
@@ -48,9 +50,16 @@ export default function Hero({
               </div>
             )}
           </div>
-          {photoDescription && (
-            <div>
-              <PhotoPlaceholder description={photoDescription} aspectRatio="4:3" />
+          {photoSrc && (
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <Image
+                src={photoSrc}
+                alt={photoAlt || ''}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
             </div>
           )}
         </div>

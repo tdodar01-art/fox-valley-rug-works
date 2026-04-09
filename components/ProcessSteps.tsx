@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import PhotoPlaceholder from './PhotoPlaceholder';
+import Image from 'next/image';
 
 interface Step {
   number: number;
   title: string;
   description: string;
-  photo: string;
+  imageSrc: string;
+  imageAlt: string;
 }
 
 interface ProcessStepsProps {
@@ -61,7 +62,15 @@ export default function ProcessSteps({ steps }: ProcessStepsProps) {
                   <p className="text-[var(--color-slate)] leading-relaxed">{step.description}</p>
                 </div>
                 <div className={`${isLeft ? '' : 'md:order-1'}`} style={{ direction: 'ltr' }}>
-                  <PhotoPlaceholder description={step.photo} aspectRatio="4:3" />
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                    <Image
+                      src={step.imageSrc}
+                      alt={step.imageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

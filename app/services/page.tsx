@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { generatePageMetadata } from '@/lib/metadata';
-import PhotoPlaceholder from '@/components/PhotoPlaceholder';
+import Image from 'next/image';
 import CTABanner from '@/components/CTABanner';
 
 export const metadata: Metadata = generatePageMetadata({
@@ -15,55 +15,64 @@ const services = [
     title: 'Area Rug Cleaning',
     description:
       'Full immersion plant cleaning for all rug types. Our core service. Pricing based on size and fiber type. Every rug is inspected, dusted, washed, rinsed, and dried using methods matched to its construction.',
-    photo: 'Photo: Rug being washed flat in the immersion wash bay',
+    imageSrc: '/images/service-area-rug-cleaning.webp',
+    imageAlt: 'Rug being washed flat in the immersion wash bay',
   },
   {
     title: 'Pet Stain & Odor Removal',
     description:
       'Enzymatic treatment plus full wash. We eliminate odor at the source \u2014 not just mask it. Uric acid crystals are broken down completely before the rug enters the wash bay.',
-    photo: 'Photo: Applying enzymatic treatment to a pet-stained rug section',
+    imageSrc: '/images/service-pet-stain-odor.webp',
+    imageAlt: 'Applying enzymatic treatment to a pet-stained rug section',
   },
   {
     title: 'Stain Removal',
     description:
       'Wine, coffee, food, ink, cosmetics. Each stain gets targeted treatment with chemistry matched to the fiber and dye before full immersion washing.',
-    photo: 'Photo: Technician spot-treating a wine stain on a light wool rug',
+    imageSrc: '/images/service-stain-removal.webp',
+    imageAlt: 'Technician spot-treating a wine stain on a light wool rug',
   },
   {
     title: 'Moth & Insect Damage',
     description:
       'Treatment, cleaning, and repair recommendations for moth-eaten rugs. We eliminate the infestation, clean the affected fibers, and assess what restoration may be needed.',
-    photo: 'Photo: Close-up of moth damage on wool fibers, showing areas needing repair',
+    imageSrc: '/images/service-moth-insect-damage.webp',
+    imageAlt: 'Close-up of moth damage on wool fibers, showing areas needing repair',
   },
   {
     title: 'Rug Repair & Restoration',
     description:
       'Fringe repair, binding, patching, re-dyeing. We handle minor repairs in-house and refer complex restoration to trusted specialists we\u2019ve worked with for years.',
-    photo: 'Photo: Hand-repairing fringe on a Persian rug with needle and thread',
+    imageSrc: '/images/service-rug-repair-restoration.webp',
+    imageAlt: 'Hand-repairing fringe on a Persian rug with needle and thread',
   },
   {
     title: 'Rug Padding',
     description:
       'Custom-cut rug pads for any size. Keeps your rug in place, prevents slipping, reduces wear, and extends its life. We recommend the right pad thickness and material for your floor type.',
-    photo: 'Photo: Custom-cut rug pad being fitted under an area rug',
+    imageSrc: '/images/service-rug-padding.webp',
+    imageAlt: 'Custom-cut rug pad being fitted under an area rug',
   },
   {
     title: 'Pickup & Delivery',
     description:
       'Free pickup and delivery within our service area. We come to you, carefully roll and transport your rug to our plant, and return it clean. Serving communities across McHenry, Kane, Lake, and northwest Cook counties.',
-    photo: 'Photo: Delivery team carefully loading a wrapped rug into the van',
+    imageSrc: '/images/service-pickup-delivery.webp',
+    imageAlt: 'Delivery team carefully loading a wrapped rug into the van',
   },
   {
     title: 'Rug Storage',
     description:
       'Climate-controlled storage for seasonal rugs. Every rug is cleaned before storage, rolled with acid-free paper, and wrapped in breathable material. Pick up when you\u2019re ready.',
-    photo: 'Photo: Wrapped rugs stored on racks in the climate-controlled storage room',
+    imageSrc: '/images/service-rug-storage.webp',
+    imageAlt: 'Wrapped rugs stored on racks in the climate-controlled storage room',
   },
   {
     title: 'Water Damage / Emergency',
     description:
       'Rug soaked in a flood or pipe burst? Bring it in ASAP. Time is critical \u2014 mold and mildew can start within 24\u201348 hours. We prioritize water damage cases to save your rug.',
-    photo: 'Photo: Water-damaged rug being unrolled for emergency assessment',
+    imageSrc: '/images/service-water-damage-emergency.webp',
+    imageAlt: 'Water-damaged rug being unrolled for emergency assessment',
   },
 ];
 
@@ -106,7 +115,9 @@ export default function ServicesPage() {
               className="bg-white rounded-lg shadow-sm border border-[var(--color-gold)]/10 overflow-hidden"
             >
               <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 ${i % 2 === 1 ? 'md:direction-rtl' : ''}`}>
-                <PhotoPlaceholder description={service.photo} aspectRatio="4:3" className="rounded-none" />
+                <div className="relative aspect-[4/3]">
+                  <Image src={service.imageSrc} alt={service.imageAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                </div>
                 <div className="p-8 md:p-10 flex flex-col justify-center" style={{ direction: 'ltr' }}>
                   <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[var(--color-charcoal)] mb-4">
                     {service.title}

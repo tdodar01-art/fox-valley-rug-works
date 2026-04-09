@@ -15,73 +15,85 @@ const rugTypes = [
     title: 'Persian Rugs',
     description:
       'Hand-knotted with natural dyes. Often the most valuable rugs in a home. We clean them with extra care for dye stability and pile direction.',
-    photo: 'Photo: Rich, detailed Persian rug with traditional medallion pattern',
+    imageSrc: '/images/rug-type-persian.webp',
+    imageAlt: 'Rich, detailed Persian rug with traditional medallion pattern',
   },
   {
     title: 'Turkish Rugs',
     description:
       'Double-knotted construction, vibrant colors. Known for durability but still require proper pH-balanced cleaning.',
-    photo: 'Photo: Turkish rug with bold geometric patterns in red and blue',
+    imageSrc: '/images/rug-type-turkish.webp',
+    imageAlt: 'Turkish rug with bold geometric patterns in red and blue',
   },
   {
     title: 'Afghan & Tribal Rugs',
     description:
       'Bold geometric designs, often with natural dyes. Prone to color bleeding if cleaned improperly.',
-    photo: 'Photo: Afghan Bokhara rug with distinctive elephant foot patterns',
+    imageSrc: '/images/rug-type-afghan.webp',
+    imageAlt: 'Afghan Bokhara rug with distinctive elephant foot patterns',
   },
   {
     title: 'Indian Rugs',
     description:
       'Wide range from hand-knotted to tufted. We identify construction type first to determine the right method.',
-    photo: 'Photo: Indian hand-knotted rug with intricate floral motifs',
+    imageSrc: '/images/rug-type-indian.webp',
+    imageAlt: 'Indian hand-knotted rug with intricate floral motifs',
   },
   {
     title: 'Chinese & Tibetan Rugs',
     description:
       'Thick pile, sculpted designs. Often require special attention to maintain texture and sheen.',
-    photo: 'Photo: Chinese sculpted rug with raised floral patterns',
+    imageSrc: '/images/rug-type-chinese.webp',
+    imageAlt: 'Chinese sculpted rug with raised floral patterns',
   },
   {
     title: 'Navajo & Southwestern Rugs',
     description:
       'Flat-woven, often made of churro wool. Very different cleaning approach than pile rugs.',
-    photo: 'Photo: Navajo flat-weave rug with classic diamond and stripe pattern',
+    imageSrc: '/images/rug-type-navajo.webp',
+    imageAlt: 'Navajo flat-weave rug with classic diamond and stripe pattern',
   },
   {
     title: 'Moroccan Rugs',
     description:
       'Shag-style Beni Ourain and flat-woven kilims. Each requires a different approach.',
-    photo: 'Photo: Plush Moroccan Beni Ourain rug with diamond lattice design',
+    imageSrc: '/images/rug-type-moroccan.webp',
+    imageAlt: 'Plush Moroccan Beni Ourain rug with diamond lattice design',
   },
   {
     title: 'Machine-Made Rugs',
     description:
       'Polypropylene, nylon, polyester. We clean these efficiently without the hand-care premium.',
-    photo: 'Photo: Modern machine-made area rug with contemporary pattern',
+    imageSrc: '/images/rug-type-machine-made.webp',
+    imageAlt: 'Modern machine-made area rug with contemporary pattern',
   },
   {
     title: 'Silk Rugs',
     description:
       'Extremely delicate. Low pH, low agitation, careful drying. We handle these with extra caution.',
-    photo: 'Photo: Lustrous silk rug showing fine knot detail and sheen',
+    imageSrc: '/images/rug-type-silk.webp',
+    imageAlt: 'Lustrous silk rug showing fine knot detail and sheen',
   },
   {
     title: 'Wool Rugs',
     description:
       'The most common natural fiber. Durable but sensitive to high pH and heat.',
-    photo: 'Photo: Hand-knotted wool rug showing natural texture and lanolin sheen',
+    imageSrc: '/images/rug-type-wool.webp',
+    imageAlt: 'Hand-knotted wool rug showing natural texture and lanolin sheen',
   },
   {
     title: 'Jute & Sisal',
     description:
       'Natural plant fibers. Water-sensitive \u2014 we use controlled moisture methods.',
-    photo: 'Photo: Natural jute area rug showing woven plant fiber texture',
+    imageSrc: '/images/rug-type-jute-sisal.webp',
+    imageAlt: 'Natural jute area rug showing woven plant fiber texture',
   },
   {
     title: 'Antique & Heirloom Rugs',
     description:
       'Age, fragility, and sentimental value demand the most careful approach. We assess each one individually.',
-    photo: 'Photo: Delicate antique rug with aged patina and intricate hand-knotted detail',
+    imageSrc: '/images/rug-type-antique-heirloom.webp',
+    imageAlt: 'Delicate antique rug with aged patina and intricate hand-knotted detail',
   },
 ];
 
@@ -108,7 +120,8 @@ export default function RugTypesPage() {
                 key={rug.title}
                 title={rug.title}
                 description={rug.description}
-                photo={rug.photo}
+                imageSrc={rug.imageSrc}
+                imageAlt={rug.imageAlt}
               />
             ))}
           </div>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import PhotoPlaceholder from './PhotoPlaceholder';
+import Image from 'next/image';
 import CTABanner from './CTABanner';
 import type { City } from '@/lib/cities';
 import { getCityBySlug } from '@/lib/cities';
@@ -93,10 +93,15 @@ export default function CityPageTemplate({ city }: CityPageTemplateProps) {
                 At Fox Valley Rug Works, your rug is cleaned in our dedicated 1,800 SF plant with professional equipment: mechanical dusters, a full immersion wash bay, a centrifuge for water extraction, and a climate-controlled drying room. It&apos;s how rug cleaning is supposed to be done.
               </p>
             </div>
-            <PhotoPlaceholder
-              description={`Photo: Interior of the Fox Valley Rug Works plant showing the wash bay and drying area`}
-              aspectRatio="4:3"
-            />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <Image
+                src="/images/plant-interior-wash-bay.webp"
+                alt="Interior of the Fox Valley Rug Works plant showing the wash bay and drying area"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
