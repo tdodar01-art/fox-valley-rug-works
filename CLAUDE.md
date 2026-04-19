@@ -102,3 +102,27 @@ Adding a new city page: add a city object to `lib/cities.ts` with `slug`, `name`
 | `--color-gold` | `#C4993B` | Secondary accent |
 | `--color-sage` | `#7C8C6E` | Tertiary accent |
 | `--color-wash-blue` | `#3B6B8C` | Sparingly |
+
+---
+
+## Error logging (shared control-center log)
+
+Every project — this repo included — logs errors to ONE shared file: `~/code/control-center/logs/errors.jsonl`. **Do not create a new error log for this repo.**
+
+Use the shared CLI:
+
+```
+node ~/code/control-center/scripts/log-error.mjs \
+  --project <project-key> \
+  --message "<text>" \
+  [--severity error|warn|info] \
+  [--entity <component>] \
+  [--context '<json>' | --context-file <path>]
+```
+
+- `--project` must match this repo's `key` in `~/code/control-center/projects/projects.json` (this repo: `fvrw`).
+- CLI prints the new error id; resolve/dismiss later with `--resolve <id>` / `--dismiss <id>`.
+- The file is append-only. Never edit past lines.
+- UI: from `~/code/control-center`, `preview_start error-log` → http://localhost:4330.
+
+Full reference: `~/code/control-center/CLAUDE.md` and `STRUCTURE.md`.
